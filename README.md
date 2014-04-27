@@ -29,7 +29,7 @@ grunt.initConfig({
 
         args : {
             "-debug": "true",
-            "-target-player": ""<%= FLASHPLAYER_VERSION %>"",
+            "-target-player": "<%= FLASHPLAYER_VERSION %>",
             "-use-network": "true",
             "-static-link-runtime-shared-libraries": true,
             "-source-path" : "<%= SOURCE_PATH %>"
