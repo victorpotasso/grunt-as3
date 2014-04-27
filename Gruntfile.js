@@ -23,12 +23,32 @@ module.exports = function(grunt) {
       },
     },
 
-    //AS3
+    /**
+     * grunt-as3
+     */
+
     as3: {
         sdk : "~/Sources/flex_air/sdks/flex_4.6.0_air_sdk_3.4",
         
         builds: {
             test1: {
+                /*
+                metadata: {
+                    "-title"       : "grunt-as3",
+                    "-description" : "Grunt plugin to compile AS3 projects",
+                    "-publisher"   : "Victor Potasso",
+                    "-creator"     : "Victor Potaso",
+                    "-language"    : "en-us"
+                },
+                */
+                /*
+                settings : {
+                    "-default-size" : "240 240",
+                    "-default-frame-rate" : "24",
+                    "-default-script-limits" : "5000 10"
+                },
+                */
+
                 args : {
                     "-debug": "true",
                     "-target-player": "11.1",

@@ -25,7 +25,7 @@ grunt.loadNpmTasks('grunt-as3');
 ## The "grunt-as3" task
 
 ### Overview
-In your project's Gruntfile, add a section named `yes` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `grunt-as3` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
