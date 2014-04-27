@@ -2,6 +2,11 @@
 
 > Compile AS3 projects
 
+## Requirements
+
+This plugin requires:
++ grunt-shell
+
 ## Getting Started
 This plugin requires Grunt `~0.4.4`
 
