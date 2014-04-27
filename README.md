@@ -38,7 +38,7 @@ grunt.initConfig({
         libs : ["<%= SWC_FILES %>"],
 
         files : {            
-            ""<%= SWF_FILE %>"" : [""<%= CLASS FILE %>""]
+            "<%= SWF_FILE %>" : "[<%= CLASS FILE %>"]
         }
     },
 });
