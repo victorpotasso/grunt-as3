@@ -1,5 +1,5 @@
 {
-  "name": "yes",
+  "name": "grunt-as3",
   "description": "Compile AS3 projects",
   "version": "0.1.0",
   "homepage": "https://github.com/victorpotasso/grunt-as3",
