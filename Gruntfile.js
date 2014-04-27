@@ -1,5 +1,5 @@
 /*
- * yes
+ * grunt-as3
  * https://github.com/victorpotasso/grunt-as3
  *
  * Copyright (c) 2014 Victor
