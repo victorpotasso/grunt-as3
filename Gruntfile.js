@@ -26,20 +26,40 @@ module.exports = function(grunt) {
     //AS3
     as3: {
         sdk : "~/Sources/flex_air/sdks/flex_4.6.0_air_sdk_3.4",
+        
+        builds: {
+            test1: {
+                args : {
+                    "-debug": "true",
+                    "-target-player": "11.1",
+                    "-use-network": "true",
+                    "-static-link-runtime-shared-libraries": true,
+                    "-source-path" : "test/src/classes"
+                },
 
-        args : {
-            "-debug": "true",
-            "-target-player": "11.1",
-            "-use-network": "true",
-            "-static-link-runtime-shared-libraries": true,
-            "-source-path" : "test/src/classes"
-        },
+                libs : ["test/src/libs/swc/third-party/greensock.swc"],
 
-        libs : ["test/src/libs/swc/third-party/greensock.swc"],
+                files : {            
+                    "test/deploy/test1.swf" : ["test/src/classes/Main.as"]
+                }            
+            },
 
-        files : {            
-            "test/deploy/test.swf" : ["test/src/classes/Main.as"]
-        }
+            test2: {
+                args : {
+                    "-debug": "true",
+                    "-target-player": "11.1",
+                    "-use-network": "true",
+                    "-static-link-runtime-shared-libraries": true,
+                    "-source-path" : "test/src/classes"
+                },
+
+                libs : ["test/src/libs/swc/third-party/greensock.swc"],
+
+                files : {            
+                    "test/deploy/test2.swf" : ["test/src/classes/Main.as"]
+                }            
+            }
+        }        
     },
 
   });
