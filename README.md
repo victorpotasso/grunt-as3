@@ -131,7 +131,7 @@ grunt.initConfig({
                 libs : ["src/libs/swc/third-party/lib_name.swc"],
 
                 files : {            
-                    "deploy/assets/swf/test1.swf" : ["src/classes/Main.as"]
+                    "deploy/assets/swf/test2.swf" : ["src/classes/Main.as"]
                 }  
             }
         }
