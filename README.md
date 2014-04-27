@@ -27,18 +27,38 @@ grunt.initConfig({
     as3: {
         sdk : "<%= SDK_PATH %>",
 
-        args : {
-            "-debug": "true",
-            "-target-player": "<%= FLASHPLAYER_VERSION %>",
-            "-use-network": "true",
-            "-static-link-runtime-shared-libraries": true,
-            "-source-path" : "<%= SOURCE_PATH %>"
-        },
+        builds : {
+            test1 : {
+                args : {
+                    "-debug": "true",
+                    "-target-player": "<%= FLASHPLAYER_VERSION %>",
+                    "-use-network": "true",
+                    "-static-link-runtime-shared-libraries": true,
+                    "-source-path" : "<%= SOURCE_PATH %>"
+                },
 
-        libs : ["<%= SWC_FILES %>"],
+                libs : ["<%= SWC_FILES %>"],
 
-        files : {            
-            "<%= SWF_FILE %>" : ["<%= CLASS FILE %>"]
+                files : {            
+                    "<%= SWF_FILE %>" : ["<%= CLASS FILE %>"]
+                }
+            },
+
+            test2 : {
+                args : {
+                    "-debug": "true",
+                    "-target-player": "<%= FLASHPLAYER_VERSION %>",
+                    "-use-network": "true",
+                    "-static-link-runtime-shared-libraries": true,
+                    "-source-path" : "<%= SOURCE_PATH %>"
+                },
+
+                libs : ["<%= SWC_FILES %>"],
+
+                files : {            
+                    "<%= SWF_FILE %>" : ["<%= CLASS FILE %>"]
+                }
+            }
         }
     },
 });
@@ -49,20 +69,25 @@ grunt.initConfig({
 #### sdk
 Type: `String`
 
-Full path to Flex SDK. 
+Full path to Flex SDK.
+
+#### buils
+Type: `Object`
+
+A list of builds.
 
 #### args
-Type: `String`
+Type: `Object`
 
 These are exactly [MXMLC](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html) arguments.
 
 #### libs
-Type: `String`
+Type: `Object`
 
 List of .swc libraries to include in the compilation.
 
 #### files
-Type: `String`
+Type: `Object`
 
 Destination and List of files to compile.
 
@@ -70,7 +95,6 @@ Destination and List of files to compile.
 
 ### Usage Examples
 
-#### Default Options
 This is a simple example to use grunt-as3 plugin.
 
 ```js
@@ -78,18 +102,38 @@ grunt.initConfig({
     as3: {
         sdk : "~/Sources/flex_air/sdks/flex_4.6.0",
 
-        args : {
-            "-debug": "true",
-            "-target-player": "11.1",
-            "-use-network": "true",
-            "-static-link-runtime-shared-libraries": true,
-            "-source-path" : "src/classes"
-        },
+        builds : {
+            test1 : {
+                args : {
+                    "-debug": "true",
+                    "-target-player": "11.1",
+                    "-use-network": "true",
+                    "-static-link-runtime-shared-libraries": true,
+                    "-source-path" : "src/classes"
+                },
 
-        libs : ["src/libs/swc/third-party/lib_name.swc"],
+                libs : ["src/libs/swc/third-party/lib_name.swc"],
 
-        files : {            
-            "deploy/assets/swf/test.swf" : ["src/classes/Main.as"]
+                files : {            
+                    "deploy/assets/swf/test1.swf" : ["src/classes/Main.as"]
+                }                
+            },
+
+            test2 : {
+                args : {
+                    "-debug": "true",
+                    "-target-player": "11.1",
+                    "-use-network": "true",
+                    "-static-link-runtime-shared-libraries": true,
+                    "-source-path" : "src/classes"
+                },
+
+                libs : ["src/libs/swc/third-party/lib_name.swc"],
+
+                files : {            
+                    "deploy/assets/swf/test1.swf" : ["src/classes/Main.as"]
+                }  
+            }
         }
     },
 
