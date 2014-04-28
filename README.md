@@ -1,6 +1,9 @@
-# grunt-as3
+> This is an awesome plugin for who have been working with [Grunt.js](http://gruntjs.com/) and now have to implement few [AS3 modules](http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/) in the same environment. You don't need to download an exclusive [flex sdk plugin](https://github.com/JamesMGreene/node-flex-sdk) for it works. You should take advantage of the [Flex SDK](http://www.adobe.com/devnet/flex/flex-sdk-download.html) already installed in your environment, you have just to create a link into Gruntfile.js file. Also the [MXMLC](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html) remains the same arguments, thus you can read all the [documentation about it](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html) on the adobe's website.
 
-> Compile AS3 projects
+* Source: [github.com/victorpotasso/grunt-as3](https://github.com/victorpotasso/grunt-as3)
+* NPM: [npmjs.org/package/grunt-as3](https://www.npmjs.org/package/grunt-as3)
+* Home Page: [victorpotasso.com/](http://www.victorpotasso.com)
+* Twitter: [@victorpotasso](https://twitter.com/victorpotasso)
 
 ## Requirements
 
@@ -19,7 +22,7 @@ npm install grunt-as3 --save-dev
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-as3');
+grunt.loadNpmTasks("grunt-as3");
 ```
 
 ## The "grunt-as3" task
@@ -84,7 +87,7 @@ A list of builds.
 #### args
 Type: `Object`
 
-These are exactly [MXMLC](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html) arguments.
+[MXMLC](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html) remains the same arguments.
 
 #### libs
 Type: `Object`
@@ -148,3 +151,4 @@ grunt.initConfig({
 
 ## License
 [MIT](http://opensource.org/licenses/MIT) © [Victor Potasso](http://victorpotasso.com)
+
