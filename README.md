@@ -1,3 +1,5 @@
+# grunt-as3
+
 > This is an awesome plugin for who have been working with [Grunt.js](http://gruntjs.com/) and now have to implement few [AS3 modules](http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/) in the same environment. You don't need to download an exclusive [flex sdk plugin](https://github.com/JamesMGreene/node-flex-sdk) for it works. You should take advantage of the [Flex SDK](http://www.adobe.com/devnet/flex/flex-sdk-download.html) already installed in your environment, you have just to create a link into Gruntfile.js file. Also the [MXMLC](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html) remains the same arguments, thus you can read all the [documentation about it](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html) on the adobe's website.
 
 * Source: [github.com/victorpotasso/grunt-as3](https://github.com/victorpotasso/grunt-as3)
