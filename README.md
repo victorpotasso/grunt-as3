@@ -123,22 +123,22 @@ Full path to Flex SDK.
 #### mxmlc
 Type: `Object`
 
-Run command mxmlc from Flex SDK.
+Run command `mxmlc` from Flex SDK.
 
 #### asdoc
 Type: `Object`
 
-Run command asdoc from Flex SDK.
+Run command `asdoc` from Flex SDK.
 
 #### compc
 Type: `Object`
 
-Run command compc from Flex SDK.
+Run command `compc` from Flex SDK.
 
 #### adt
 Type: `Object`
 
-Run command adt from Flex SDK.
+Run command `adt` from Flex SDK.
 
 #### args
 Type: `Array`
