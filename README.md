@@ -40,13 +40,13 @@ grunt.initConfig({
 
         builds : {
             test1 : {
-                args : {
-                    "-debug": "true",
-                    "-target-player": "<%= FLASHPLAYER_VERSION %>",
-                    "-use-network": "true",
-                    "-static-link-runtime-shared-libraries": true,
-                    "-source-path" : "<%= SOURCE_PATH %>"
-                },
+                args : [
+                    '-debug=true',
+                    '-target-player=<%= FLASHPLAYER_VERSION %>',
+                    '-use-network=true',
+                    '-static-link-runtime-shared-libraries=true',
+                    '-source-path=<%= SOURCE_PATH %>'
+                ],
 
                 libs : ["<%= SWC_FILES %>"],
 
@@ -56,13 +56,13 @@ grunt.initConfig({
             },
 
             test2 : {
-                args : {
-                    "-debug": "true",
-                    "-target-player": "<%= FLASHPLAYER_VERSION %>",
-                    "-use-network": "true",
-                    "-static-link-runtime-shared-libraries": true,
-                    "-source-path" : "<%= SOURCE_PATH %>"
-                },
+                args : [
+                    '-debug=true',
+                    '-target-player=<%= FLASHPLAYER_VERSION %>',
+                    '-use-network=true',
+                    '-static-link-runtime-shared-libraries=true',
+                    '-source-path=<%= SOURCE_PATH %>'
+                ],
 
                 libs : ["<%= SWC_FILES %>"],
 
@@ -115,13 +115,22 @@ grunt.initConfig({
 
         builds : {
             test1 : {
-                args : {
-                    "-debug": "true",
-                    "-target-player": "11.1",
-                    "-use-network": "true",
-                    "-static-link-runtime-shared-libraries": true,
-                    "-source-path" : "src/classes"
-                },
+                args : [
+                    '-language+=klingon',
+                    '-title "checkintest!"', 
+                    '-localized-description "it is awesome" en-us', 
+                    '-localized-description "c est magnifique!" fr-fr',
+                    '-creator "Flexy Frank"',
+
+                    '-default-size 500 500',
+                    '-default-frame-rate=24',
+                    
+                    '-debug=true',
+                    '-target-player=11.1',
+                    '-use-network=true',
+                    '-static-link-runtime-shared-libraries=true',
+                    '-source-path=test/src/classes'
+                ],
 
                 libs : ["src/libs/swc/third-party/lib_name.swc"],
 
@@ -131,13 +140,13 @@ grunt.initConfig({
             },
 
             test2 : {
-                args : {
-                    "-debug": "true",
-                    "-target-player": "11.1",
-                    "-use-network": "true",
-                    "-static-link-runtime-shared-libraries": true,
-                    "-source-path" : "src/classes"
-                },
+                args : [
+                    '-debug=true',
+                    '-target-player=11.1',
+                    '-use-network=true',
+                    '-static-link-runtime-shared-libraries=true',
+                    '-source-path=test/src/classes'
+                ],
 
                 libs : ["src/libs/swc/third-party/lib_name.swc"],
 

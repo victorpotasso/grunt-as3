@@ -47,8 +47,8 @@ module.exports = function(grunt)
              */
                          
             for(var arg in args)
-            {                        
-                argsStr += arg + "=" + args[arg] + " ";
+            {   
+                argsStr += args[arg] + " ";
             }
 
             /**

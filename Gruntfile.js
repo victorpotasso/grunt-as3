@@ -32,30 +32,23 @@ module.exports = function(grunt) {
         
         builds: {
             test1: {
-                /*
-                metadata: {
-                    "-title"       : "grunt-as3",
-                    "-description" : "Grunt plugin to compile AS3 projects",
-                    "-publisher"   : "Victor Potasso",
-                    "-creator"     : "Victor Potaso",
-                    "-language"    : "en-us"
-                },
-                */
-                /*
-                settings : {
-                    "-default-size" : "240 240",
-                    "-default-frame-rate" : "24",
-                    "-default-script-limits" : "5000 10"
-                },
-                */
 
-                args : {
-                    "-debug": "true",
-                    "-target-player": "11.1",
-                    "-use-network": "true",
-                    "-static-link-runtime-shared-libraries": true,
-                    "-source-path" : "test/src/classes"
-                },
+                args : [
+                    '-language+=klingon',
+                    '-title "checkintest!"', 
+                    '-localized-description "it is awesome" en-us', 
+                    '-localized-description "c est magnifique!" fr-fr',
+                    '-creator "Flexy Frank"',
+
+                    '-default-size 500 500',
+                    '-default-frame-rate=24',
+                    
+                    '-debug=true',
+                    '-target-player=11.1',
+                    '-use-network=true',
+                    '-static-link-runtime-shared-libraries=true',
+                    '-source-path=test/src/classes'
+                ],
 
                 libs : ["test/src/libs/swc/third-party/greensock.swc"],
 
@@ -65,13 +58,13 @@ module.exports = function(grunt) {
             },
 
             test2: {
-                args : {
-                    "-debug": "true",
-                    "-target-player": "11.1",
-                    "-use-network": "true",
-                    "-static-link-runtime-shared-libraries": true,
-                    "-source-path" : "test/src/classes"
-                },
+                args : [
+                    '-debug=true',
+                    '-target-player=11.1',
+                    '-use-network=true',
+                    '-static-link-runtime-shared-libraries=true',
+                    '-source-path=test/src/classes'
+                ],
 
                 libs : ["test/src/libs/swc/third-party/greensock.swc"],
 
