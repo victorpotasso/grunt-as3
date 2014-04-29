@@ -43,34 +43,29 @@ grunt.initConfig({
         mxmlc : {
             test1 : {
                 args : [
-                    '-debug=true',
-                    '-target-player=<%= FLASHPLAYER_VERSION %>',
-                    '-use-network=true',
-                    '-static-link-runtime-shared-libraries=true',
-                    '-source-path=<%= SOURCE_PATH %>'
-                ],
-
-                libs : ["<%= SWC_FILES %>"],
-
-                files : {            
-                    "<%= SWF_FILE %>" : ["<%= CLASS FILE %>"]
-                }
+                    "-debug=true",
+                    "-target-player=<%= FLASHPLAYER_VERSION %>",
+                    "-use-network=true",
+                    "-static-link-runtime-shared-libraries=true",
+                    "-source-path=<%= SOURCE_PATH %>",
+                    "-compiler.include-libraries+=<%= LIB_PATH %>",
+                    "-output <%= SWF %> <%= AS %>"
+                ]
             },
 
             test2 : {
                 args : [
-                    '-debug=true',
-                    '-target-player=<%= FLASHPLAYER_VERSION %>',
-                    '-use-network=true',
-                    '-static-link-runtime-shared-libraries=true',
-                    '-source-path=<%= SOURCE_PATH %>'
-                ],
+                    "-default-size 500 500",
+                    "-default-frame-rate=24",
 
-                libs : ["<%= SWC_FILES %>"],
-
-                files : {            
-                    "<%= SWF_FILE %>" : ["<%= CLASS FILE %>"]
-                }
+                    "-debug=true",
+                    "-target-player=<%= FLASHPLAYER_VERSION %>",
+                    "-use-network=true",
+                    "-static-link-runtime-shared-libraries=true",
+                    "-source-path=<%= SOURCE_PATH %>",
+                    "-compiler.include-libraries+=<%= LIB_PATH %>",
+                    "-output <%= SWF %> <%= AS %>"
+                ]
             }
         },
 
