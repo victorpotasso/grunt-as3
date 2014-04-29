@@ -1,0 +1,19 @@
+<asdoc>
+
+<classRec name='Main' fullname='Main' sourcefile='/Library/WebServer/Documents/clients/grunt-as3/test/src/classes/Main.as' namespace='' access='public' baseclass='flash.display:Sprite' isFinal='false' isDynamic='false' >
+<description><![CDATA[
+     ]]></description>
+<author><![CDATA[victorpotasso
+     ]]></author>
+</classRec>
+<method name='Main' fullname='Main/Main' isStatic='false' isFinal='false' isOverride='false'  result_type='*'>
+</method>
+<method name='create' fullname='Main/private:create' isStatic='false' isFinal='false' isOverride='false'  param_names='evt' param_types='flash.events:Event' param_defaults='undefined' result_type='void'>
+</method>
+<method name='out' fullname='Main/private:out' isStatic='false' isFinal='false' isOverride='false'  param_names='evt' param_types='flash.events:MouseEvent' param_defaults='undefined' result_type='void'>
+</method>
+<method name='over' fullname='Main/private:over' isStatic='false' isFinal='false' isOverride='false'  param_names='evt' param_types='flash.events:MouseEvent' param_defaults='undefined' result_type='void'>
+</method>
+<field name='asset' fullname='Main/private:asset' type='flash.display:Sprite' isStatic='false' isConst='false' >
+</field>
+</asdoc>

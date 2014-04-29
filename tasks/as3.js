@@ -1,5 +1,13 @@
-/*
- * as3
+/***
+ *                            _                    _____ 
+ *                           | |                  |____ |
+ *      __ _ _ __ _   _ _ __ | |_ ______ __ _ ___     / /
+ *     / _` | '__| | | | '_ \| __|______/ _` / __|    \ \
+ *    | (_| | |  | |_| | | | | |_      | (_| \__ \.___/ /
+ *     \__, |_|   \__,_|_| |_|\__|      \__,_|___/\____/ 
+ *      __/ |                                            
+ *     |___/                                             
+ *
  * https://github.com/victorpotasso/grunt-as3
  *
  * Copyright (c) 2014 Victor
@@ -10,80 +18,36 @@
 
 module.exports = function(grunt) 
 {
-    // Please see the Grunt documentation for more information regarding task
-    // creation: http://gruntjs.com/creating-tasks
-
-    grunt.registerTask('as3', 'Compile AS3 projects', function()  
+    grunt.registerMultiTask('as3', 'Compile AS3 projects', function()  
     {   
-        /**
-         * Shell config
-         */
+         //console.log(this.data);
         
-        var shellConfig = {};
+        // Shell config
+                
+        var shellConfig = null;
+
         
-        /**
-         * Get objects from Gruntfile.js
-         */
+        // Get Flex SDK
+         
+        var SDK = grunt.config.get('flex_sdk');
 
-        var as3   = grunt.config.get('as3');
-        var SDK   = as3.sdk;
-        var MXMLC = SDK + "/bin/mxmlc";
-        var builds = as3.builds;
-
-        for(var build in builds)
+        for(var i in this.data)
         {
-            var args  = builds[build].args;
-            var libs  = builds[build].libs;
-            var files = builds[build].files;
-            
-            /**
-             * Args String
-             */
-
-             var argsStr = "";
-
-            /**
-             * Arguments
-             */
-                         
-            for(var arg in args)
-            {   
-                argsStr += args[arg] + " ";
-            }
-
-            /**
-             * Libs
-             */
-
-            for(var lib in libs)
-            {                        
-                argsStr += "-compiler.include-libraries+=" + libs[lib] + " ";
-            }
-
-            /*
-             * Files
-             */
-
-            for(var file in files)
-            {  
-                argsStr += "-output " + file + " " + files[file] + " ";
-            }
-        
-            /**
-             * add command to shell config
-             */
-            
-            shellConfig[build] = {
-                command: MXMLC + " " + argsStr
+            shellConfig = shellConfig == null ? {} : shellConfig;
+            shellConfig[i] = 
+            {
+                command: SDK + "/bin/" + this.target + " " + this.data[i]["args"].join().replace(/,/g , " ")
             }
         }
 
-        /**
-         * Compiling
-         */
-
-        grunt.loadNpmTasks('grunt-shell');        
-        grunt.config('shell', shellConfig);
-        grunt.task.run("shell"); 
+        // Run Shell
+        
+        if(shellConfig != null)
+        {
+            grunt.loadNpmTasks('grunt-shell');        
+            grunt.config('shell', shellConfig);
+            grunt.task.run("shell");
+        }
+              
     });
 };

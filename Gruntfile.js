@@ -10,84 +10,94 @@
 
 module.exports = function(grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js',
-        '<%= nodeunit.tests %>',
-      ],
-      options: {
-        jshintrc: '.jshintrc',
-      },
-    },
+    // Project configuration.
+    grunt.initConfig({
+       
+        /**
+         * jshint
+         */
 
-    /**
-     * grunt-as3
-     */
+        jshint: {
+            all: [
+                'Gruntfile.js',
+                'tasks/*.js',
+                '<%= nodeunit.tests %>',
+            ],
+            options: {
+                jshintrc: '.jshintrc',
+            },
+        },
 
-    as3: {
-        sdk : "~/Sources/flex_air/sdks/flex_4.6.0_air_sdk_3.4",
-        
-        builds: {
-            test1: {
+        /**
+         * grunt-as3
+         */
 
-                args : [
-                    '-language+=klingon',
-                    '-title "checkintest!"', 
-                    '-localized-description "it is awesome" en-us', 
-                    '-localized-description "c est magnifique!" fr-fr',
-                    '-creator "Flexy Frank"',
-
-                    '-default-size 500 500',
-                    '-default-frame-rate=24',
+        flex_sdk : "~/Sources/flex_air/sdks/flex_4.5.1_air_sdk_3.0",    
+        as3: {
                     
-                    '-debug=true',
-                    '-target-player=11.1',
-                    '-use-network=true',
-                    '-static-link-runtime-shared-libraries=true',
-                    '-source-path=test/src/classes'
-                ],
-
-                libs : ["test/src/libs/swc/third-party/greensock.swc"],
-
-                files : {            
-                    "test/deploy/test1.swf" : ["test/src/classes/Main.as"]
-                }            
+            asdoc : {
+                main : {
+                    args : [
+                        "-source-path test/src/classes/",
+                        "-doc-sources test/src/classes/", 
+                        "-library-path test/src/libs/swc/third-party",
+                        "-output test/docs"
+                    ]
+                }
             },
 
-            test2: {
-                args : [
-                    '-debug=true',
-                    '-target-player=11.1',
-                    '-use-network=true',
-                    '-static-link-runtime-shared-libraries=true',
-                    '-source-path=test/src/classes'
-                ],
+            mxmlc : {
+                test1: {
 
-                libs : ["test/src/libs/swc/third-party/greensock.swc"],
+                    args : [
+                        '-language+=klingon',
+                        '-title "checkintest!"', 
+                        '-localized-description "it is awesome" en-us', 
+                        '-localized-description "c est magnifique!" fr-fr',
+                        '-creator "Victor Potasso"',
 
-                files : {            
-                    "test/deploy/test2.swf" : ["test/src/classes/Main.as"]
-                }            
-            }
-        }        
-    },
+                        '-default-size 500 500',
+                        '-default-frame-rate=24',
 
-  });
+                        "-compiler.include-libraries+=test/src/libs/swc/third-party/greensock.swc",
+                        
+                        '-debug=true',
+                        '-target-player=11.1',
+                        '-use-network=true',
+                        '-static-link-runtime-shared-libraries=true',
+                        '-source-path=test/src/classes',
+                        "-output test/deploy/swf/test1.swf test/src/classes/Main.as"
+                    ]
+                },
 
-  // Actually load this plugin's task(s).
-  grunt.loadTasks('tasks');
+                test2: {
+                    args : [
+                        "-compiler.include-libraries+=test/src/libs/swc/third-party/greensock.swc",
+                        
+                        '-debug=true',
+                        '-target-player=11.1',
+                        '-use-network=true',
+                        '-static-link-runtime-shared-libraries=true',
+                        '-source-path=test/src/classes',
+                        "-output test/deploy/swf/test2.swf test/src/classes/Main.as"
+                    ]
+                }
+            },            
+        }
+    });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+    // Actually load this plugin's task(s).
+    grunt.loadTasks('tasks');
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-  // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['as3']);
+    // These plugins provide necessary tasks.
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+    // Default Task
+    grunt.registerTask('default', ['as3']);
 
+    // Documentation
+    grunt.registerTask('documentation', ['as3:asdoc']);
+
+    // swf 
+    grunt.registerTask('swf', ['as3:mxmlc']);
 };

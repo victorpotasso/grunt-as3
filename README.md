@@ -35,10 +35,12 @@ In your project's Gruntfile, add a section named `grunt-as3` to the data object 
 
 ```js
 grunt.initConfig({
-    as3: {
-        sdk : "<%= SDK_PATH %>",
+    
+    sdk : "<%= SDK_PATH %>",
 
-        builds : {
+    as3: {
+
+        mxmlc : {
             test1 : {
                 args : [
                     '-debug=true',
@@ -70,6 +72,42 @@ grunt.initConfig({
                     "<%= SWF_FILE %>" : ["<%= CLASS FILE %>"]
                 }
             }
+        },
+
+        asdoc : {
+            main : {
+                args : [
+                    "-source-path <%= SOURCE_PATH %>",
+                    "-doc-sources <%= SOURCE_PATH %>", 
+                    "-library-path <%= LIBRARY_PATH %>",
+                    "-output <%= OUTPUT_PATH %>"
+                ]
+            }
+        },
+
+        adt : {
+            android : {
+                args : []
+            },
+            
+            ios : {
+                args : []
+            },
+
+            air : {
+                args : []
+            }
+        },
+
+        compc : {
+            lib1 : {
+                args : []
+            },
+
+            lib2 : {
+                args : []
+            }
+
         }
     },
 });
@@ -82,85 +120,35 @@ Type: `String`
 
 Full path to Flex SDK.
 
-#### buils
+#### mxmlc
 Type: `Object`
 
-A list of builds.
+Run command mxmlc from Flex SDK.
+
+#### asdoc
+Type: `Object`
+
+Run command asdoc from Flex SDK.
+
+#### compc
+Type: `Object`
+
+Run command compc from Flex SDK.
+
+#### adt
+Type: `Object`
+
+Run command adt from Flex SDK.
 
 #### args
-Type: `Object`
+Type: `Array`
 
-[MXMLC](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html) remains the same arguments.
+The `args` is always inside of a Flex SDK command object as you saw in the example. You can check the documentation for:
++ [MXMLC](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html) remains the same arguments.
++ [ASDOC](http://help.adobe.com/en_US/flex/using/WSd0ded3821e0d52fe1e63e3d11c2f44bc36-7ffa.html)
++ [COMPC](http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fd2.html)
++ [ADT](http://help.adobe.com/en_US/air/build/WS5b3ccc516d4fbf351e63e3d118666ade46-7fd9.html)
 
-#### libs
-Type: `Object`
-
-List of .swc libraries to include in the compilation.
-
-#### files
-Type: `Object`
-
-Destination and List of files to compile.
-
-
-
-### Usage Examples
-
-This is a simple example to use grunt-as3 plugin.
-
-```js
-grunt.initConfig({
-    as3: {
-        sdk : "~/Sources/flex_air/sdks/flex_4.6.0",
-
-        builds : {
-            test1 : {
-                args : [
-                    '-language+=klingon',
-                    '-title "checkintest!"', 
-                    '-localized-description "it is awesome" en-us', 
-                    '-localized-description "c est magnifique!" fr-fr',
-                    '-creator "Flexy Frank"',
-
-                    '-default-size 500 500',
-                    '-default-frame-rate=24',
-                    
-                    '-debug=true',
-                    '-target-player=11.1',
-                    '-use-network=true',
-                    '-static-link-runtime-shared-libraries=true',
-                    '-source-path=test/src/classes'
-                ],
-
-                libs : ["src/libs/swc/third-party/lib_name.swc"],
-
-                files : {            
-                    "deploy/assets/swf/test1.swf" : ["src/classes/Main.as"]
-                }                
-            },
-
-            test2 : {
-                args : [
-                    '-debug=true',
-                    '-target-player=11.1',
-                    '-use-network=true',
-                    '-static-link-runtime-shared-libraries=true',
-                    '-source-path=test/src/classes'
-                ],
-
-                libs : ["src/libs/swc/third-party/lib_name.swc"],
-
-                files : {            
-                    "deploy/assets/swf/test2.swf" : ["src/classes/Main.as"]
-                }  
-            }
-        }
-    },
-
-  });
-});
-```
 
 ## License
 [MIT](http://opensource.org/licenses/MIT) © [Victor Potasso](http://victorpotasso.com)
-
