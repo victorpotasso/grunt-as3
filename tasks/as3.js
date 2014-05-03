@@ -20,7 +20,7 @@ module.exports = function(grunt)
 {
     grunt.registerMultiTask('as3', 'Compile AS3 projects', function()  
     {   
-         //console.log(this.data);
+        //console.log(this);
         
         // Shell config
                 
@@ -30,15 +30,27 @@ module.exports = function(grunt)
         // Get Flex SDK
          
         var SDK = grunt.config.get('flex_sdk');
-
-        for(var i in this.data)
+        
+        if( this.args.length > 0 )
         {
             shellConfig = shellConfig == null ? {} : shellConfig;
-            shellConfig[i] = 
+            shellConfig[ this.args[0] ] = 
             {
-                command: SDK + "/bin/" + this.target + " " + this.data[i]["args"].join().replace(/,/g , " ")
+                command: SDK + "/bin/" + this.target + " " + this.data[ this.args[0] ]["args"].join().replace(/,/g , " ")
             }
+            
         }
+        else {
+            for(var i in this.data)
+            {
+                shellConfig = shellConfig == null ? {} : shellConfig;
+                shellConfig[i] = 
+                {
+                    command: SDK + "/bin/" + this.target + " " + this.data[i]["args"].join().replace(/,/g , " ")
+                }
+            }
+        }        
+        
 
         // Run Shell
         
