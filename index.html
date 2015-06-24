@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Grunt-as3 by victorpotasso</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Grunt-as3</h1>
+        <h2>Grunt plugin to compile AS3 projects</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/victorpotasso/grunt-as3/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/victorpotasso/grunt-as3/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/victorpotasso/grunt-as3" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="grunt-as3" class="anchor" href="#grunt-as3" aria-hidden="true"><span class="octicon octicon-link"></span></a>grunt-as3</h1>
+
+<p><a href="http://gruntjs.com/"><img src="https://cdn.gruntjs.com/builtwith.png" alt="Built with Grunt"></a></p>
+
+<blockquote>
+<p>This is an awesome plugin for who have been working with <a href="http://gruntjs.com/">Grunt.js</a> and now have to implement few <a href="http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/">AS3 modules</a> in the same environment. You don't need to download an exclusive <a href="https://github.com/JamesMGreene/node-flex-sdk">flex sdk plugin</a> for it works. You should take advantage of the <a href="http://www.adobe.com/devnet/flex/flex-sdk-download.html">Flex SDK</a> already installed in your environment, you have just to create a link into Gruntfile.js file. Also the <a href="http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html">MXMLC</a> remains the same arguments, thus you can read all the <a href="http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html">documentation about it</a> on the adobe's website.</p>
+</blockquote>
+
+<ul>
+<li>Source: <a href="https://github.com/victorpotasso/grunt-as3">github.com/victorpotasso/grunt-as3</a>
+</li>
+<li>NPM: <a href="https://www.npmjs.org/package/grunt-as3">npmjs.org/package/grunt-as3</a>
+</li>
+<li>Home Page: <a href="http://www.victorpotasso.com">victorpotasso.com/</a>
+</li>
+<li>Twitter: <a href="https://twitter.com/victorpotasso">@victorpotasso</a>
+</li>
+</ul>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>This plugin requires:</p>
+
+<ul>
+<li>grunt-shell</li>
+</ul>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>This plugin requires Grunt <code>~0.4.4</code></p>
+
+<p>If you haven't used <a href="http://gruntjs.com/">Grunt</a> before, be sure to check out the <a href="http://gruntjs.com/getting-started">Getting Started</a> guide, as it explains how to create a <a href="http://gruntjs.com/sample-gruntfile">Gruntfile</a> as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:</p>
+
+<div class="highlight highlight-shell"><pre>npm install grunt-as3 --save-dev</pre></div>
+
+<p>Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:</p>
+
+<div class="highlight highlight-js"><pre>grunt.loadNpmTasks(<span class="pl-s"><span class="pl-pds">"</span>grunt-as3<span class="pl-pds">"</span></span>);</pre></div>
+
+<h2>
+<a id="the-grunt-as3-task" class="anchor" href="#the-grunt-as3-task" aria-hidden="true"><span class="octicon octicon-link"></span></a>The "grunt-as3" task</h2>
+
+<h3>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+<p>In your project's Gruntfile, add a section named <code>grunt-as3</code> to the data object passed into <code>grunt.initConfig()</code>.</p>
+
+<div class="highlight highlight-js"><pre>grunt.initConfig({
+
+    sdk <span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>&lt;%= SDK_PATH %&gt;<span class="pl-pds">"</span></span>,
+
+    as3<span class="pl-k">:</span> {
+
+        mxmlc <span class="pl-k">:</span> {
+            test1 <span class="pl-k">:</span> {
+                args <span class="pl-k">:</span> [
+                    <span class="pl-s"><span class="pl-pds">"</span>-debug=true<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-target-player=&lt;%= FLASHPLAYER_VERSION %&gt;<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-use-network=true<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-static-link-runtime-shared-libraries=true<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-source-path=&lt;%= SOURCE_PATH %&gt;<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-compiler.include-libraries+=&lt;%= LIB_PATH %&gt;<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-output &lt;%= SWF %&gt; &lt;%= AS %&gt;<span class="pl-pds">"</span></span>
+                ]
+            },
+
+            test2 <span class="pl-k">:</span> {
+                args <span class="pl-k">:</span> [
+                    <span class="pl-s"><span class="pl-pds">"</span>-default-size 500 500<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-default-frame-rate=24<span class="pl-pds">"</span></span>,
+
+                    <span class="pl-s"><span class="pl-pds">"</span>-debug=true<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-target-player=&lt;%= FLASHPLAYER_VERSION %&gt;<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-use-network=true<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-static-link-runtime-shared-libraries=true<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-source-path=&lt;%= SOURCE_PATH %&gt;<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-compiler.include-libraries+=&lt;%= LIB_PATH %&gt;<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-output &lt;%= SWF %&gt; &lt;%= AS %&gt;<span class="pl-pds">"</span></span>
+                ]
+            }
+        },
+
+        asdoc <span class="pl-k">:</span> {
+            main <span class="pl-k">:</span> {
+                args <span class="pl-k">:</span> [
+                    <span class="pl-s"><span class="pl-pds">"</span>-source-path &lt;%= SOURCE_PATH %&gt;<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-doc-sources &lt;%= SOURCE_PATH %&gt;<span class="pl-pds">"</span></span>, 
+                    <span class="pl-s"><span class="pl-pds">"</span>-library-path &lt;%= LIBRARY_PATH %&gt;<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>-output &lt;%= OUTPUT_PATH %&gt;<span class="pl-pds">"</span></span>
+                ]
+            }
+        },
+
+        adt <span class="pl-k">:</span> {
+            android <span class="pl-k">:</span> {
+                args <span class="pl-k">:</span> []
+            },
+
+            ios <span class="pl-k">:</span> {
+                args <span class="pl-k">:</span> []
+            },
+
+            air <span class="pl-k">:</span> {
+                args <span class="pl-k">:</span> []
+            }
+        },
+
+        compc <span class="pl-k">:</span> {
+            lib1 <span class="pl-k">:</span> {
+                args <span class="pl-k">:</span> []
+            },
+
+            lib2 <span class="pl-k">:</span> {
+                args <span class="pl-k">:</span> []
+            }
+
+        }
+    },
+});</pre></div>
+
+<h3>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<h4>
+<a id="sdk" class="anchor" href="#sdk" aria-hidden="true"><span class="octicon octicon-link"></span></a>sdk</h4>
+
+<p>Type: <code>String</code></p>
+
+<p>Full path to Flex SDK.</p>
+
+<h4>
+<a id="mxmlc" class="anchor" href="#mxmlc" aria-hidden="true"><span class="octicon octicon-link"></span></a>mxmlc</h4>
+
+<p>Type: <code>Object</code></p>
+
+<p>Run command <code>mxmlc</code> from Flex SDK.</p>
+
+<h4>
+<a id="asdoc" class="anchor" href="#asdoc" aria-hidden="true"><span class="octicon octicon-link"></span></a>asdoc</h4>
+
+<p>Type: <code>Object</code></p>
+
+<p>Run command <code>asdoc</code> from Flex SDK.</p>
+
+<h4>
+<a id="compc" class="anchor" href="#compc" aria-hidden="true"><span class="octicon octicon-link"></span></a>compc</h4>
+
+<p>Type: <code>Object</code></p>
+
+<p>Run command <code>compc</code> from Flex SDK.</p>
+
+<h4>
+<a id="adt" class="anchor" href="#adt" aria-hidden="true"><span class="octicon octicon-link"></span></a>adt</h4>
+
+<p>Type: <code>Object</code></p>
+
+<p>Run command <code>adt</code> from Flex SDK.</p>
+
+<h4>
+<a id="args" class="anchor" href="#args" aria-hidden="true"><span class="octicon octicon-link"></span></a>args</h4>
+
+<p>Type: <code>Array</code></p>
+
+<p>The <code>args</code> is always inside of a Flex SDK command object as you saw in the example. You can check the documentation for:</p>
+
+<ul>
+<li>
+<a href="http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fcc.html">MXMLC</a> remains the same arguments.</li>
+<li><a href="http://help.adobe.com/en_US/flex/using/WSd0ded3821e0d52fe1e63e3d11c2f44bc36-7ffa.html">ASDOC</a></li>
+<li><a href="http://help.adobe.com/en_US/flex/using/WS2db454920e96a9e51e63e3d11c0bf69084-7fd2.html">COMPC</a></li>
+<li><a href="http://help.adobe.com/en_US/air/build/WS5b3ccc516d4fbf351e63e3d118666ade46-7fd9.html">ADT</a></li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="http://opensource.org/licenses/MIT">MIT</a> © <a href="http://victorpotasso.com">Victor Potasso</a></p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
