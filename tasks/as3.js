@@ -46,7 +46,7 @@ module.exports = function(grunt)
                 shellConfig = shellConfig == null ? {} : shellConfig;
                 shellConfig[i] = 
                 {
-                    command: SDK + "/bin/" + this.target + " " + this.data[i]["args"].join().replace(/,/g , " ")
+                    command: SDK + "/bin/" + this.target + " " + this.data[i]["args"].join(" ")
                 }
             }
         }        
