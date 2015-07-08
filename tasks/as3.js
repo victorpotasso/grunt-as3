@@ -36,7 +36,7 @@ module.exports = function(grunt)
             shellConfig = shellConfig == null ? {} : shellConfig;
             shellConfig[ this.args[0] ] = 
             {
-                command: SDK + "/bin/" + this.target + " " + this.data[ this.args[0] ]["args"].join().replace(/,/g , " ")
+                command: SDK + "/bin/" + this.target + " " + this.data[ this.args[0] ]["args"].join(" ")
             }
             
         }
@@ -46,7 +46,7 @@ module.exports = function(grunt)
                 shellConfig = shellConfig == null ? {} : shellConfig;
                 shellConfig[i] = 
                 {
-                    command: SDK + "/bin/" + this.target + " " + this.data[i]["args"].join().replace(/,/g , " ")
+                    command: SDK + "/bin/" + this.target + " " + this.data[i]["args"].join(" ")
                 }
             }
         }        
